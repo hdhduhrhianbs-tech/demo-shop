@@ -4,7 +4,7 @@ from flask import Flask
 from threading import Thread
 import time
 
-# --- СЕРВЕР ДЛЯ RENDER ---
+# --- МИНИ-СЕРВЕР ДЛЯ RENDER ---
 app = Flask('')
 @app.route('/')
 def home(): return "Shop is Alive"
@@ -14,10 +14,11 @@ def keep_alive():
     t.start()
 # -------------------------
 
+# Твой полный токен из BotFather
 TOKEN = '8643102833:AAFT3-4fcuu5l5OOEeGloVBx83loSIKrVb0'
 bot = telebot.TeleBot(TOKEN)
 
-# Товари для магазину
+# Данные о товарах для примера
 products = {
     "iphone": {"name": "iPhone 15 Pro", "price": "45 000 грн", "img": "https://pixabay.com"},
     "macbook": {"name": "MacBook Air M2", "price": "52 000 грн", "img": "https://pixabay.com"}
@@ -55,4 +56,4 @@ def callback_inline(call):
 if __name__ == "__main__":
     keep_alive()
     bot.infinity_polling()
-  
+    
